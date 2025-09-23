@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
-//Funcion octal para ver si un numero es octal y decimal al mismo tiempo 
+
+// Función octal: valida si la cadena es octal
 int esOctal(const char *cadena) {
     int i = 0;
     
@@ -12,6 +13,7 @@ int esOctal(const char *cadena) {
     }
     return 1;
 }
+
 // Función para mapear cada caracter a una columna de la tabla
 int columna(int c) {
     if (c == '+' || c == '-') return 0;                  // Columna +/- 
@@ -51,7 +53,7 @@ int esPalabra(char* cadena, int* estadoFinal) {
         /*q1*/ {  -1,    4,    3,   -1,   -1,   -1,   -1,   -1 },
         /*q2*/ {  -1,    3,    3,   -1,   -1,   -1,   -1,   -1 },
         /*q3*/ {  -1,    3,    3,   -1,    3,   -1,   -1,    3 }, // acepta DEC
-        /*q4*/ {  -1,    8,    3,    9,    3,    5,   -1,   -1 },
+        /*q4*/ {  -1,    8,   -1,    9,   -1,    5,   -1,   -1 }, // <- CAMBIO: ya no va a decimal con 1-9
         /*q5*/ {  -1,    6,    6,   -1,   -1,   -1,    6,   -1 },
         /*q6*/ {  -1,    7,    7,   -1,   -1,   -1,    7,   -1 },
         /*q7*/ {  -1,    7,    7,   -1,   -1,   -1,    7,    7 }, // acepta HEX
@@ -95,13 +97,7 @@ int main() {
     if (verifica(cadena)) {
         if (esPalabra(cadena, &estadoFinal)) {
             if (estadoFinal == 3)
-                
-                if(esOctal(cadena) == 1)
-                {
-                    printf("Puede ser OCTAL o DECIMAL\n");
-
-                } else printf("Es un numero DECIMAL\n");
-
+                printf("Es un numero DECIMAL\n");
             else if (estadoFinal == 7)
                 printf("Es un numero HEXADECIMAL\n");
             else if (estadoFinal == 8 || estadoFinal == 10)
