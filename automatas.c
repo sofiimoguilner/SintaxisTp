@@ -34,7 +34,7 @@ int verifica(char* cadena)
     return 1;
 }
 
-// Función que recorre la tabla de transiciones
+// Funcion que recorre la tabla de transiciones
 int esPalabra(char* cadena, int* estadoFinal) 
 {
     static int tt[11][8] = 
