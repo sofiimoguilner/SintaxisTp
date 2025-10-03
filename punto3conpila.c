@@ -23,13 +23,19 @@ int verifica(char* cadena) {
 
 
 // funcion punto 2
-int convierteCaracterNumericoAEntero(char caracter) {
-    if (caracter >= '0' && caracter <= '9') {
-        return caracter - '0';
-    } else {
-        printf("ERROR: caracter no numérico: '%c'\n", caracter);
-        return ERROR;
-    }
+int convierteCaracterNumericoAEntero(const char *caracter)
+{  
+    int entero;
+	if (*caracter>='0' && *caracter<='9')
+	{
+		entero=(*caracter)-'0';
+	    return entero;
+	}
+	else
+	{
+		printf("ERROR: no ingreso un caracter numérico\n");
+		return ERROR;
+	}
 }
 
 // funcion auxiliar para saber si num es negativo
@@ -130,7 +136,7 @@ int evaluar(const char* exp) {
             
             int valor = 0;
             while (isdigit(exp[i])) {
-                int digito = convierteCaracterNumericoAEntero(exp[i]);
+                int digito = convierteCaracterNumericoAEntero(&exp[i]);
                 if (digito == ERROR) return ERROR;
                 valor = valor * 10 + digito;
                 i++;
