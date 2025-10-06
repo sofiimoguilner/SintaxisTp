@@ -230,8 +230,8 @@ int main() {
         return 1;
     }
 
-    printf("Infijo: %s\n", expresion);
-
+	infijoAPostfijo(expresion);
+	
     int resultado = evaluar(expresion);
     if (resultado != ERROR) {
         printf("Resultado: %d\n", resultado);
@@ -243,3 +243,4 @@ int main() {
     return 0;
 
 }
+
